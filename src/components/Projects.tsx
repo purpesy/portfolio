@@ -13,17 +13,18 @@ export function Projects() {
   ) as Array<keyof typeof t.projects>;
 
   return (
-    <section id="portfolio" className="py-16 md:py-24 px-6 w-full max-w-6xl mx-auto overflow-hidden">
-      <div className="mb-12 md:mb-16 text-center md:text-left">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight leading-tight">
+    <section id="projetos" className="py-24 md:py-32 px-6 w-full max-w-6xl mx-auto overflow-hidden scroll-mt-24">
+      <div className="mb-14 max-w-2xl">
+        <span className="eyebrow mb-5">Portfólio</span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
           {t.projects.title}
         </h2>
-        <p className="text-neutral-400 text-sm sm:text-lg max-w-2xl leading-relaxed">
+        <p className="mt-4 text-muted text-sm md:text-base max-w-2xl leading-relaxed">
           {t.projects.description}
         </p>
       </div>
 
-      <div className="flex flex-col gap-16 md:gap-24">
+      <div className="flex flex-col gap-8 md:gap-12">
         {projectKeys.map((key, index) => {
           const project = t.projects[key] as any;
           return (
@@ -33,9 +34,9 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative rounded-2xl md:rounded-3xl bg-neutral-900 border border-neutral-800 overflow-hidden flex flex-col ${
+              className={`card relative overflow-hidden flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              } group`}
+              } group !rounded-2xl md:!rounded-3xl`}
             >
               {/* Subtle Glow inside the card */}
               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[100px] rounded-full pointer-events-none transition-opacity opacity-0 group-hover:opacity-100" />
@@ -119,29 +120,42 @@ export function Projects() {
                           <div className="w-full h-12 bg-neutral-800/30 rounded-md mt-auto" />
                         </>
                       )}
-                      {/* {key === 'edu' && (
-                        <div className="flex flex-col items-center gap-4 h-full">
-                           <div className="w-full h-32 bg-accent/10 border border-accent/20 rounded-lg flex items-center justify-center">
-                              <div className="w-16 h-16 rounded-full bg-accent/20 animate-pulse" />
+                      {key === 'perf' && (
+                        <div className="font-mono text-[10px] sm:text-[11px] p-2 overflow-hidden flex flex-col gap-1.5">
+                           <div className="text-neutral-500">$ perf scan ./api</div>
+                           <div className="flex items-center justify-between">
+                              <span className="text-neutral-400">GET /users</span>
+                              <span className="text-red-400">904ms</span>
                            </div>
-                           <div className="w-3/4 h-4 bg-neutral-800 rounded" />
-                           <div className="w-1/2 h-4 bg-neutral-800 rounded" />
-                           <div className="w-full h-10 bg-accent/20 rounded-md mt-auto" />
+                           <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                              <div className="h-full w-[90%] bg-red-500/60 rounded-full" />
+                           </div>
+                           <div className="flex items-center justify-between mt-2">
+                              <span className="text-neutral-400">GET /users <span className="text-neutral-600">(otimizado)</span></span>
+                              <span className="text-green-400">94ms</span>
+                           </div>
+                           <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                              <div className="h-full w-[10%] bg-green-500/70 rounded-full" />
+                           </div>
+                           <div className="mt-2 text-blue-400/80">▲ -90% response time</div>
                         </div>
                       )}
-                      {key === 'infra' && (
-                        <div className="font-mono text-[10px] text-green-500/70 p-2 overflow-hidden">
-                           <div>$ docker-compose up -d</div>
-                           <div className="text-white/50">Creating orbitra-db ... done</div>
-                           <div className="text-white/50">Creating orbitra-api ... done</div>
-                           <div className="text-white/50">Creating orbitra-frontend ... done</div>
-                           <div className="mt-2 text-blue-400"># Nginx Config</div>
-                           <div className="text-neutral-500">server &#123;</div>
-                           <div className="text-neutral-500">&nbsp;&nbsp;listen 80;</div>
-                           <div className="text-neutral-500">&nbsp;&nbsp;server_name orbitra.app;</div>
-                           <div className="text-neutral-500">&#125;</div>
+                      {key === 'scratch' && (
+                        <div className="flex flex-col gap-2.5 h-full justify-center">
+                           <div className="h-7 rounded-md bg-accent/20 border border-accent/30 flex items-center px-3">
+                              <div className="w-16 h-2 bg-accent/40 rounded-full" />
+                           </div>
+                           <div className="h-7 rounded-md bg-primary/15 border border-primary/25 ml-4 flex items-center px-3">
+                              <div className="w-20 h-2 bg-primary/40 rounded-full" />
+                           </div>
+                           <div className="h-7 rounded-md bg-green-500/15 border border-green-500/25 ml-8 flex items-center px-3">
+                              <div className="w-12 h-2 bg-green-500/40 rounded-full" />
+                           </div>
+                           <div className="h-7 rounded-md bg-neutral-800/60 border border-neutral-700 ml-4 flex items-center px-3">
+                              <div className="w-24 h-2 bg-neutral-600 rounded-full" />
+                           </div>
                         </div>
-                      )} */}
+                      )}
                     </div>
                  </div>
               </div>

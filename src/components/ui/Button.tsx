@@ -12,12 +12,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50",
+          "group/btn relative inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-200",
+          "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--color-primary)]/50 focus-visible:ring-offset-1 focus-visible:ring-offset-black",
+          "disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
           "h-11 px-6 py-2",
-          variant === "primary" && "bg-primary text-white hover:bg-primary-dark shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]",
-          variant === "secondary" && "bg-accent text-white hover:bg-accent/90",
-          variant === "outline" && "border border-neutral-800 bg-transparent hover:bg-neutral-900 text-foreground",
-          variant === "ghost" && "hover:bg-neutral-900 text-foreground",
+          /* Glass base */
+          "bg-black/40 backdrop-blur-sm border text-[color:var(--color-foreground)]",
+          "shadow-[inset_0_1px_0_rgba(255,253,242,0.07),0_4px_20px_-6px_rgba(0,0,0,0.6)]",
+          variant === "primary" &&
+            "border-[color:var(--color-primary)]/45 shadow-[inset_0_1px_0_rgba(255,253,242,0.09),0_0_28px_-6px_var(--color-glow)] hover:border-[color:var(--color-primary)]/70 hover:bg-black/55 hover:shadow-[inset_0_1px_0_rgba(255,253,242,0.12),0_0_38px_-4px_var(--color-glow)]",
+          variant === "secondary" &&
+            "border-[color:var(--color-primary)]/18 hover:border-[color:var(--color-primary)]/38 hover:bg-black/55",
+          variant === "outline" &&
+            "border-[color:var(--color-primary)]/18 bg-transparent hover:border-[color:var(--color-primary)]/38 hover:bg-black/30",
+          variant === "ghost" &&
+            "border-transparent bg-transparent backdrop-blur-none shadow-none hover:bg-black/30 hover:border-[color:var(--color-primary)]/15",
           className
         )}
         {...props}
